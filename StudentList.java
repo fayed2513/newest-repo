@@ -8,14 +8,11 @@ if(args==null||args.length!=1){
     System.out.println("Wrong Argument");
     return;
 }
+        String readLine = fileReader("students.txt");
 //		Check arguments
         if (args[0].equals("a")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader bufferedReader = new BufferedReader(
-                                                new InputStreamReader(
-                                                new FileInputStream("students.txt")));
-                String readLine = bufferedReader.readLine();
                 String studentList[] = readLine.split(",");
                 for (String elements : studentList) {
                     System.out.println(elements);
@@ -26,10 +23,7 @@ if(args==null||args.length!=1){
         } else if (args[0].equals("r")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader bufferedReader = new BufferedReader(
-						           new InputStreamReader(
-                                   new FileInputStream("students.txt")));
-                String readLine = bufferedReader.readLine();
+
                 String studentList[] = readLine.split(",");
                 Random random = new Random();
                 int number = random.nextInt(studentList.length);
@@ -56,10 +50,7 @@ if(args==null||args.length!=1){
         } else if (args[0].contains("?")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader bufferedReader = new BufferedReader(
-                                   new InputStreamReader(
-                                   new FileInputStream("students.txt")));
-                String readLine = bufferedReader.readLine();
+
                 String studentList[] = readLine.split(",");
                 boolean done = false;
                 String substring = args[0].substring(1);
@@ -75,11 +66,7 @@ if(args==null||args.length!=1){
         } else if (args[0].equals("c")) {
             System.out.println("Loading data ...");
             try {
-                BufferedReader bufferedReader = new BufferedReader(
-                                   new InputStreamReader(
-                                   new FileInputStream("students.txt")));
-                String list = bufferedReader.readLine();
-                char charArray[] = list.toCharArray();
+                char charArray[] = readLine.toCharArray();
                 boolean in_word = false;
                 int count = 0;
                 for (char elements : charArray) {
@@ -99,6 +86,17 @@ if(args==null||args.length!=1){
         }
         else{
             System.out.println("Wrong Argument");
+        }
+    }
+
+    public static String fileReader(String fileName) {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(
+                                            new InputStreamReader(
+                                            new FileInputStream("students.txt")));
+            return bufferedReader.readLine();
+        } catch (Exception e) {
+            return null;
         }
     }
 }
