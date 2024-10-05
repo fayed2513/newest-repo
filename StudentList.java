@@ -25,11 +25,10 @@ public class StudentList {
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
 			String r = s.readLine();
-			System.out.println(r);
 			String i[] = r.split(",");	
 			Random x = new Random();
-				int y = x.nextInt();
-					System.out.println(i[y]);
+				int y = x.nextInt(i.length);
+					System.out.println(i[y].trim());
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");			
 		}
@@ -61,7 +60,7 @@ public class StudentList {
 			boolean done = false;
 			String t = args[0].substring(1);
 			for(int idx = 0; idx<i.length && !done; idx++) {
-				if(i[idx].equals(t)) {
+				if(i[idx].trim().equals(t)) {
 					System.out.println("We found it!");
 						done=true;
 				}
@@ -87,7 +86,7 @@ public class StudentList {
 					else { in_word=false;}			
 				}
 			}
-			System.out.println(count +" word(s) found " + a.length);
+			System.out.println(count +" word(s) found ");
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");				
 		}
