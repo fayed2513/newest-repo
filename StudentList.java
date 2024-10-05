@@ -37,10 +37,8 @@ if(args==null||args.length!=1){
                 BufferedWriter bufferedWriter = new BufferedWriter(
                                    new FileWriter(Constants.studentFile, true));
                 String substring = args[0].substring(1);
-                Date date = new Date();
-                String date_formated = Constants.timeFormat;
-                DateFormat dateFormat = new SimpleDateFormat(date_formated);
-                String formatted = dateFormat.format(date);
+                DateFormat dateFormat = new SimpleDateFormat(Constants.timeFormat);
+                String formatted = dateFormat.format(new Date());
                 bufferedWriter.write(Constants.splitAt + substring +Constants.lastUpdate+ formatted);
                 bufferedWriter.close();
             } catch (Exception e) {
