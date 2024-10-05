@@ -50,12 +50,11 @@ if(args==null||args.length!=1){
             try {
 
                 String studentList[] = readLine.split(Constants.splitAt);
-                boolean done = false;
                 String substring = args[0].substring(1);
-                for (int idx = 0; idx < studentList.length && !done; idx++) {
+                for (int idx = 0; idx < studentList.length ; idx++) {
                     if (studentList[idx].trim().equals(substring)) {
                         System.out.println(Constants.isFound);
-                        done = true;
+                       return;
                     }
                 }
             } catch (Exception e) {
